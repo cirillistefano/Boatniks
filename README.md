@@ -3,7 +3,7 @@ A pure screen 12, regatta like game.
 -------------------------------------------------------------------------------
 How to play.
 -------------------------------------------------
-If this game doesn't fit for you, simply press "h" key. As general rule, don't try to change the wheel while pushing, the result may be unpredictable.
+If this game doesn't fit for you, simply press "h" key. As general rule, don't try to change the wheel while pushing, the result may be unpredictable. Alt + Enter = fullscreen mode.
 
 1)Closed to the wind:
 ---------------------------------------------
