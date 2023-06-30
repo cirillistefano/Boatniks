@@ -1,4 +1,6 @@
 # hauraki
+![hauraki](https://github.com/cirillistefano/hauraki/assets/56515908/e5282a4e-977f-4045-9c45-b4d770ce3fbd)
+
 A pure screen 12, regatta like game.
 -------------------------------------------------------------------------------
 How to play.
