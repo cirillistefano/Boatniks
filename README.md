@@ -7,4 +7,5 @@ move the wheel with PgUp or PgDn, you must choose the right angle(as showed in f
 -----------------------------------------------------------------------
 Changing direction:
 ---------------------------------------------------------------
-![immagine](https://github.com/cirillistefano/hauraki/assets/56515908/1bd0d7bc-d960-4b74-934b-8d09f0c9fb71)
+
+![secondoh](https://github.com/cirillistefano/hauraki/assets/56515908/1ec9a745-d967-42b8-a272-b0b442f1bfcd)
