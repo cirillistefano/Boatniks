@@ -96,11 +96,7 @@ Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 
 
-DECLARE SUB SaveScreenFile (filename$, ScreenMode%)
-DECLARE SUB ReadScreenFile (filename$)
-DECLARE FUNCTION GetScreenWidth% (ScreenMode%)
-DECLARE FUNCTION GetScreenHeight% (ScreenMode%)
-DECLARE FUNCTION ImageBufferSize& (x%, y%, x2%, y2%, ScreenMode%)
+
 declare Sub delay (numSeconds#, frequency#)
 declare Sub unSetupTimer ()
 declare Function setupTimer# (frequency#)
@@ -941,99 +937,6 @@ Sub UpdateKeys (k())
     Def Seg = 0
     Poke 1052, Peek(1050) 'clears keyboard buffer (gets rid of beeping)
 End Sub
-Function GetScreenHeight% (ScreenMode%)
-    Select Case ScreenMode%
-        Case 1, 2, 7, 8, 13: GetScreenHeight% = 200
-        Case 9, 10: GetScreenHeight% = 350
-        Case 11, 12: GetScreenHeight% = 480
-        Case Else: GetScreenHeight% = 0
-    End Select
-End Function
-
-Function GetScreenWidth% (ScreenMode%)
-    Select Case ScreenMode%
-        Case 1, 7, 13: GetScreenWidth% = 320
-        Case 2, 8, 9, 10, 11, 12: GetScreenWidth% = 640
-        Case Else: GetScreenWidth% = 0
-    End Select
-End Function
-
-Function ImageBufferSize& (x%, y%, x2%, y2%, ScreenMode%)
-    myWidth& = Abs(x2% - x%) + 1
-    myHeight& = Abs(y2% - y%) + 1
-    Select Case ScreenMode%
-        Case 1: BPPlane = 2: Planes = 1
-        Case 2, 3, 4, 11: BPPlane = 1: Planes = 1
-        Case 7, 8, 9, 12: BPPlane = 1: Planes = 4
-        Case 10: BPPlane = 1: Planes = 2
-        Case 13: BPPlane = 8: Planes = 1
-        Case Else: BPPlane = 0
-    End Select
-    ImageBufferSize& = 4 + Int((myWidth& * BPPlane + 7) / 8) * (myHeight& * Planes) 'return the value to function name.
-
-End Function
-
-Sub ReadScreenFile (filename$)
-    Open "R", #1, filename$, 2
-    Field #1, 2 As c$
-
-    Get #1
-    ScreenMode% = CVI(c$)
-    Get #1
-    myWidth% = CVI(c$)
-    Get #1
-    myHeight% = CVI(c$)
-
-    size% = ImageBufferSize&(1, 1, myWidth%, 1, ScreenMode%) / 2 - 2
-    Dim ImageBuf%(size% + 2)
-    pad% = LBound(ImageBuf%)
-
-    ImageBuf%(pad%) = myWidth%
-    If ScreenMode% = 1 Then ImageBuf%(pad%) = myWidth% * 2
-    If ScreenMode% = 13 Then ImageBuf%(pad%) = myWidth% * 8
-    ImageBuf%(pad% + 1) = 1
-
-    For j% = 0 To myHeight% - 1
-        For i% = 0 To size% - 1
-            Get #1
-            ImageBuf%(pad% + i% + 2) = CVI(c$)
-        Next i%
-        Put (0, j%), ImageBuf%()
-    Next j%
-    Close #1
-End Sub
-
-Sub SaveScreenFile (filename$, ScreenMode%)
-    myWidth% = GetScreenWidth(ScreenMode%)
-    myHeight% = GetScreenHeight(ScreenMode%)
-
-    size% = ImageBufferSize&(1, 1, myWidth%, 1, ScreenMode%) / 2 - 2
-    Dim ImageBuf%(size% + 2)
-    pad% = LBound(ImageBuf%)
-
-    Open "R", #1, filename$, 2
-    Field #1, 2 As c$
-
-    LSet c$ = MKI$(ScreenMode%) 'screen mode
-    Put #1
-
-    LSet c$ = MKI$(myWidth%) 'width
-    Put #1
-
-    LSet c$ = MKI$(myHeight%) 'height
-    Put #1
-
-    For j% = 0 To myHeight% - 1
-        Get (0, j%)-(myWidth% - 1, j%), ImageBuf%()
-        For i% = 0 To size% - 1
-            LSet c$ = MKI$(ImageBuf%(pad% + i% + 2))
-            Put #1
-        Next i%
-    Next j%
-    Close #1
-End Sub
-
-
 
 
 
