@@ -585,7 +585,7 @@ While trigger% = 0
             End If
         End If
         If keys(35) Then
-            System
+            End
         End If
         '------------- Drawing the sprites in the right position  -----------------
         PUT2 barca%(), 19, 25, x%, y%
