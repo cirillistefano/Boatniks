@@ -5,6 +5,7 @@ $Debug
 ' ***  ***  *  *  ***   ***  **   *
 ' * *  * *  ****  *  *  * *  * *  *
 '***********************************
+'Thanks to Ted Felix, the Sprites' wizard;to logiclrd for his faq "Delays and timing in Quickbasic";to RetroNick for his tutorial about collision in qbasic; to Toshi's Project Page.
 '-------------------------------------
 'A regatta-like game
 '-------------------------------------
