@@ -1,10 +1,12 @@
 
 'Hi all, if this program doesn't fit for you, simply press "H"
 'Thanks to Ted Felix, the Sprites' wizard;to logiclrd for his faq "Delays and timing in Quickbasic";to RetroNick for his tutorial about collision in qbasic; to Toshi's Project Page.
+'--------------------------------------------------------------------
+'BOATNIKS
 '-------------------------------------
-'A regatta-like game
+'A joke about regatta-like game
 '-------------------------------------
-
+'Mask
 Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
@@ -58,7 +60,7 @@ Const ONEDEG = PI2 / 360 '              one radian degree
 
 ' $DYNAMIC
 Randomize Timer
-'Dim Shared winddirezione!
+
 DefInt A-Z
 Dim Shared accelerazione!
 
@@ -131,12 +133,12 @@ Sleep 6
 Cls
 
 'setting the screen
-'Screen 12
+
 Screen _NewImage(800, 600, 256)
-'View (0, 0)-(790, 595), 1, 9
+
 Color 10, 1
 Cls
-Line (0, 0)-(799, 599), 2, B
+
 'Line (5, 270)-(8, 350), 4, B
 'Color 10, 1
 'Disegna la direzione del vento
@@ -156,7 +158,7 @@ Next i
 
 Sleep 10
 
-'Reading data from the sprites
+'Reading data from the sprite's mask
 For Z = 0 To 25
     For j = 0 To 19
 
@@ -164,8 +166,8 @@ For Z = 0 To 25
         'PSet (10 + j, 230 + Z), 255
     Next j
 Next Z
-' End of sprites
-
+' End of mask
+'-------------------------------------------------------
 
 wind.direzione! = 25 'Wind's direction
 Print ""; wind.direzione! * (PI / 180); ""
@@ -186,9 +188,7 @@ accelerazione! = (Pascal! * ship.sailarea) / 154
 
 'Debug informations
 Print "Wind Speed"; wind.forza; "knots"
-'Differenziale   dx/dy
-'der! = accelerazione! / angolodibolina!
-'Print Using "##.###^^^^"; der!
+
 
 
 
@@ -212,19 +212,17 @@ player(2).sprt.h% = 26
 '
 rx% = 0
 ry% = 0
-rh% = 799
-rw% = 599
-'---------------------------------------------------
+rw% = 799
+rh% = 599
+'----------- Drawing Arena -----------------------
+Line (rx%, ry%)-(rw%, rh%), 2, B
+
 boa.boa_x = 680
 boa.boa_y = 295
 boa.radius = 10
-'Line (rx%, ry%)-(rh%, rw%), 6, B
-'Call PlotLine(65, 10, 520, 10, 7)
-'Call PlotLine(65, 420, 520, 420, 7)
+
 Circle (boa.boa_x, boa.boa_y), boa.radius, 5
-'Call PlotLine(65, 10, 65, 50, 7)
-'Call PlotLine(65, 50, 520, 50, 7)
-'Call PlotLine(520, 10, 520, 50, 7)
+'------------------End of Arena's drawing ---------------------------------
 
 
 lastx% = 0
@@ -235,6 +233,7 @@ lastx1% = 0
 lasty1% = 0
 lastw1% = 0
 lasth1% = 0
+
 Def Seg = VarSeg(barca%(0))
 Def Seg = VarSeg(barca1%(0))
 BLoad "BARCA01.PCX", VarPtr(barca%(0))
@@ -243,11 +242,14 @@ Def Seg
 
 dx = 1
 dy = 1
+'----------- Loading Sprite's files ---------------------
 Call sprite(player(1).sprt.location.x%, player(1).sprt.location.y%, "BARCA01.PCX")
 Call sprite(player(2).sprt.location.x%, player(2).sprt.location.y%, "BARCA02.PCX")
-'PUT2 Barca%(), 20, 26, x%, y%
-'PUT2 Barca2%(), 20, 26, x2%, y2%
+
 trigger% = 0
+'----------------------------------------------------------------
+'--------------- Start of Main -----------------------------------
+'-----------------------------------------------------------------
 While Not trigger% = 1
 
     Do
@@ -349,16 +351,19 @@ While Not trigger% = 1
             trigger = 1
             End
         End If
-
+        '-------------------------- Delay's Loop -----------------------------
         For i = 1 To 3000
         Next i
-
+        '------------ End of Loop --------------------------
+'------------------------ Drawing the Sprites in the right location --------------------------------------
         Call sprite(player(1).sprt.location.x%, player(1).sprt.location.y%, "BARCA01.PCX")
         Wait &H3DA, 8
         Call sprite(player(2).sprt.location.x%, player(2).sprt.location.y%, "BARCA02.PCX")
         Wait &H3DA, 8
-
+'------------------ End of drawing Sprites -----------------------------------
+        '----------------------------------------------------------------------------------
         '----------------------- Collisions' engine ----------------------------------------
+        '-----------------------------------------------------------------------------------
 
         If ((lastx% <> player(1).sprt.location.x%) Or (lasty% <> player(1).sprt.location.y%) Or (lastw% <> player(1).sprt.w%) Or (lasth% <> player(1).sprt.h%)) Then
             lastx% = player(1).sprt.location.x%
@@ -424,6 +429,7 @@ While Not trigger% = 1
         Def Seg = &H40: Poke &H17, 0: Def Seg
     Loop Until keys(1) 'until ESC is pressed
 Wend
+'----------------------- End of Main ---------------------------------------------------------
 'Loop Until kb$ = Chr$(27)
 
 Call unSetupTimer
