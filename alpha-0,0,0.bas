@@ -1,5 +1,9 @@
 
-
+'Hi all, if this program doesn't fit for you, simply press "H"
+'Thanks to Ted Felix, the Sprites' wizard;to logiclrd for his faq "Delays and timing in Quickbasic";to RetroNick for his tutorial about collision in qbasic; to Toshi's Project Page.
+'-------------------------------------
+'A regatta-like game
+'-------------------------------------
 
 Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 Data 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
