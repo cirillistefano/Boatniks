@@ -268,7 +268,7 @@ While Not trigger% = 1
         PSet (p2x, p2y - 10), 14
         'End of GPS
 
-
+'-------------- Player 1 ------------------------------------------
 
         If keys(75) Then
 
@@ -307,7 +307,7 @@ While Not trigger% = 1
             player(1).sprt.location.y% = player(1).sprt.location.y% - (der! * Sin(angolodipoppa(1)))
 
         End If
-
+'--------------------------Player 2-----------------------------------
         If keys(30) Then
 
             theta! = theta! - ONEDEG
@@ -418,7 +418,7 @@ While Not trigger% = 1
             End If
         End If
         '------------------- End of checking boundaries ------------------
-
+'----------------------------------- End of checking collisions ------------------------------------
 
 
         Def Seg = &H40: Poke &H17, 0: Def Seg
