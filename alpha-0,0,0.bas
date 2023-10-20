@@ -172,8 +172,11 @@ Next Z
 wind.direzione! = 25 'Wind's direction
 Print ""; wind.direzione! * (PI / 180); ""
 Sleep 10
-wind.forza! = 12
-wind.velocita! = .5 * wind.forza
+Randomize Timer
+r% = Int(Rnd * 10 + 6)
+wind.forza! = r%
+'wind.forza! = 12
+wind.velocita! = .5 * wind.forza!
 ship.sailarea = 20
 'REM La riga seguente calcola la pressione del vento sulla vela x mq
 Pascal! = (wind.velocita! ^ 2) * .613
@@ -274,7 +277,7 @@ While Not trigger% = 1
 
         If keys(75) Then
 
-            phi! = phi! - ONEDEG
+            'phi! = phi! - ONEDEG
             angolodibolina!(1) = (phi! * (PI / 180))
             der! = Round(accelerazione! / angolodibolina!(1), 2)
             player(1).sprt.location.x% = player(1).sprt.location.x% + (der! + Cos(angolodibolina!(1)))
@@ -283,7 +286,7 @@ While Not trigger% = 1
         End If
 
         If keys(77) Then
-            phi! = phi! + ONEDEG
+            'phi! = phi! + ONEDEG
             angolodibolina!(1) = (phi! * (PI / 180))
             der! = Round(accelerazione! / angolodibolina!(1), 2)
             player(1).sprt.location.x% = player(1).sprt.location.x% + (der! + Cos(angolodibolina!(1)))
@@ -292,7 +295,7 @@ While Not trigger% = 1
         End If
 
         If keys(72) Then
-            alpha! = wind.direzione! - ONEDEG
+            'alpha! = wind.direzione! - ONEDEG
             angolodipoppa(1) = alpha! * (PI / 180)
             der! = Round((accelerazione! / angolodipoppa(1)), 2)
             player(1).sprt.location.x% = player(1).sprt.location.x% - (der! * Cos(angolodipoppa(1)))
@@ -302,7 +305,7 @@ While Not trigger% = 1
         End If
 
         If keys(80) Then
-            alpha! = wind.direzione! + ONEDEG
+            'alpha! = wind.direzione! + ONEDEG
             angolodipoppa(1) = alpha! * (PI / 180)
             der! = Round((accelerazione! / angolodipoppa(1)), 2)
             player(1).sprt.location.x% = player(1).sprt.location.x% - (der! * Cos(angolodipoppa(1)))
@@ -312,7 +315,7 @@ While Not trigger% = 1
 '--------------------------Player 2-----------------------------------
         If keys(30) Then
 
-            theta! = theta! - ONEDEG
+            'theta! = theta! - ONEDEG
             angolodibolina(2) = (theta! * (PI / 180))
             der! = Round((accelerazione! / angolodibolina(2)), 3)
             player(2).sprt.location.x% = (player(2).sprt.location.x% + (der! + Cos(angolodibolina(2))))
@@ -322,7 +325,7 @@ While Not trigger% = 1
 
         If keys(32) Then
 
-            theta! = theta! + ONEDEG
+            'theta! = theta! + ONEDEG
             angolodibolina(2) = (theta! * (PI / 180))
             der! = Round((accelerazione! / angolodibolina!(2)), 3)
             player(2).sprt.location.x% = (player(2).sprt.location.x% + (der! + Cos(angolodibolina!(2))))
@@ -359,7 +362,7 @@ While Not trigger% = 1
         Call sprite(player(1).sprt.location.x%, player(1).sprt.location.y%, "BARCA01.PCX")
         Wait &H3DA, 8
         Call sprite(player(2).sprt.location.x%, player(2).sprt.location.y%, "BARCA02.PCX")
-        Wait &H3DA, 8
+        Wait &H3DA, 8,8
 '------------------ End of drawing Sprites -----------------------------------
         '----------------------------------------------------------------------------------
         '----------------------- Collisions' engine ----------------------------------------
