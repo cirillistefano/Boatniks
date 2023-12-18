@@ -1,2 +1,3 @@
 It's a two players game: player 1 keys are LeftArrow and right arrow in the way of "bolina" and Up and Down arrows in the way of "poppa". These keys are for player 2: "a" and "d" in the "bolina"'s path and "w" and "s" in the "poppa"'s path.The screen's definition is 800x600 and it means, substantially it's a QB64 program.
 
+12-18-2023 I've migrated all of my code to Freebasic, dialect "fblite". beta-0.0.0.bas is the last release.
