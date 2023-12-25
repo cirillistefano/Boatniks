@@ -818,15 +818,19 @@ if abs(hypot(cast(single,player(1).spirit.location.x-player(2).spirit.location.x
   if player(1).ship.andatura.bolina = true  and player(2).ship.andatura.bolina = true then
          if    (player(1).spirit.location.x > player(2).spirit.location.x)  then
             player(2).ship.accelerazione -= .1
+             
          else
             player(1).ship.accelerazione -= .1
+             
          end if
    end if
    if  player(1).ship.andatura.poppa = true   and player(2).ship.andatura.poppa = true then
       if   (player(1).spirit.location.x < player(2).spirit.location.x) then
             player(2).ship.accelerazione -= .1
+           
       else
             player(1).ship.accelerazione -= .1
+            
       end if
     end if
 end if
