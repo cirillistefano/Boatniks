@@ -3,4 +3,4 @@ It's a two players game: player 1 keys are PgUp and PgDown to move the wheel, Le
 
 12-18-2023 I've migrated all of my code to Freebasic, dialect "fblite". beta-0.0.2.bas is the last release.
 
-2-02-2024 New version beta-o.0.3 and tiles directory added. 
+2-02-2024 New version beta-0.0.3 and tiles directory added. 
