@@ -12,8 +12,8 @@
 'See the License for the specific language governing permissions and
 'limitations under the License.
 '----------------------------------------------- CREDITS --------------------------------------------------------------------
-'Thanks to Ted Felix, the Sprites' wizard;to logiclrd for his faq "Delays and timing in Quickbasic";to RetroNick for his tutorial about collision in qbasic; to Toshi's Project Page; 
-'to Pete's qbasic site and last, but not least, to all the community of the freebasic.
+'Thanks to Ted Felix, the Sprites' wizard;to "logiclrd" for his faq "Delays and timing in Quickbasic";to "RetroNick" for his tutorial about collision in qbasic; to Toshi's Project Page; 
+'to Pete's qbasic site, to "SysOp" and last, but not least, to all the community of the freebasic.
 '-----------------------------------------------------------------------------------------------------------------------------
 #lang "fblite"
 '#lang "qb"
@@ -1449,6 +1449,7 @@ sub p2pvector( p2px as single, p2py as single, p2px1 as single, p2py1 as single)
     vy = vy / dist '         normalize y vector (  -1 to 1 )
 end sub
 
+'------------------Credits to "SysOp" for the rnd_range function -------------------
 Function rnd_range (first As Double, last As Double) As Double
     Function = Rnd * (last - first) + first
 End Function
