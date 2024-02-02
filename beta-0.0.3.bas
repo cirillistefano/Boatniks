@@ -12,8 +12,8 @@
 'See the License for the specific language governing permissions and
 'limitations under the License.
 '----------------------------------------------- CREDITS --------------------------------------------------------------------
-'Thanks to Ted Felix, the Sprites' wizard;to logiclrd for his faq "Delays and timing in Quickbasic";to RetroNick for his tutorial about collision in qbasic; to Toshi's Project Page; 
-'to Pete's qbasic site and last, but not least, to all the community of the freebasic.
+'Thanks to Ted Felix, the Sprites' wizard;to "logiclrd" for his faq "Delays and timing in Quickbasic";to "RetroNick" for his tutorial about collision in qbasic; to Toshi's Project Page; 
+'to Pete's qbasic site, to "SysOp" and last, but not least, to all the community of the freebasic.
 '-----------------------------------------------------------------------------------------------------------------------------
 #lang "fblite"
 '#lang "qb"
