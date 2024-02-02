@@ -1449,6 +1449,7 @@ sub p2pvector( p2px as single, p2py as single, p2px1 as single, p2py1 as single)
     vy = vy / dist '         normalize y vector (  -1 to 1 )
 end sub
 
+'------------------Credits to "SysOp" for the rnd_range function -------------------
 Function rnd_range (first As Double, last As Double) As Double
     Function = Rnd * (last - first) + first
 End Function
