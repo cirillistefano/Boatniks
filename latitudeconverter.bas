@@ -4,29 +4,30 @@
 ' The function DecimalLatitudecalculate! has like parameter the y position, and returns the angle in decimal(distance from the "equatore" and relative angle).
 ' Passing this number as parameter to the function  NSLatitudeconverter$, it returns a string with the sessagesimal Latitude position.
 ' ------------------------------------------------------------------------------------------------------------------------------------
-declare Function DecimalLatitudecalculate! (relativey As Single)
-declare function NSLatitudeconverter$(ad as single)
-Dim Shared xratio, yratio As Single
-Dim Shared centerx, centery, ypos As Single
-Dim Shared deccalculate As Single
-Dim latitudine As String
-Dim Shared temppos As Single
+declare Function DecimalLatitudecalculate (relativey As Single) as single
+declare function NSLatitudeconverter(ad as single) as string
+Dim Shared as single xratio, yratio 
+Dim Shared as single centerx, centery, ypos 
+Dim Shared as single deccalculate 
+Dim as string latitudine 
+Dim Shared as single decimalpos 
 
 Screen 12
 xratio = 1.77
 yratio = 2.66
 centerx = 320
 centery = 240
-ypos = 106
+ypos = 332
 
 
-latitudine = NSLatitudeconverter$(temppos)
+latitudine = NSLatitudeconverter(decimalpos)
 Print "Sessagesimal latitude position: "; latitudine
+sleep
 End
 
 
 
-Function NSLatitudeconverter$ (ad As Single)
+Function NSLatitudeconverter(ad As Single) as string
     Dim num As String
     Dim nuovastringa As String
     Dim altrastringa As String
@@ -42,10 +43,11 @@ Function NSLatitudeconverter$ (ad As Single)
     Dim tempstring As String
     Dim minus As String
     Dim alert As Integer
+    dim posi as integer
 
-    temppos = DecimalLatitudecalculate!(ypos)
+    decimalpos = DecimalLatitudecalculate(ypos)
     dot = Chr$(46)
-    tempstring = Str$(temppos)
+    tempstring = Str$(decimalpos)
     posi = InStr(tempstring, dot)
     If Left$(tempstring, 1) = Chr$(45) Then 'If minus in front of the string, issues an alert setting a bit.
         'Print "minus sign detected"
@@ -62,17 +64,17 @@ Function NSLatitudeconverter$ (ad As Single)
     End If
     If Right$(tempstring, 1) = "0" Then 'If the last digit is = 0 then adds .1 cause Val function doesn.t care about a zero.
 
-        temppos = Val(tempstring) + .1
+        decimalpos = Val(tempstring) + .1
 
     Else
-        temppos = Val(tempstring)
+        decimalpos = Val(tempstring)
     End If
 
 
     'num = ad
-    num = Str$(temppos)
-    Print "Decimal lat itude: "; num
-    Sleep
+    num = Str$(decimalpos)
+    Print "Decimal latitude: "; num
+    'Sleep
     If Left$(num, 1) = Chr$(45) Then
         cardinal = "South"
         num = Right$(num, Len(num) - 1)
@@ -86,7 +88,7 @@ Function NSLatitudeconverter$ (ad As Single)
     'Sleep 30
     nuovastringa = Left$(num, posizione - 1)
     nuovastringa = nuovastringa + Chr$(248)
-    nuovonumero = Val(nuovastringa)
+    'nuovonumero = Val(nuovastringa)
     'Print nuovonumero
     altrastringa = Right$(num, Len(num) - posizione)
     If Len(altrastringa) > 1 Then
@@ -101,16 +103,16 @@ Function NSLatitudeconverter$ (ad As Single)
     'Print neominuti$
     secondi = Right$(minuti, Len(minuti) - minutipos)
     'Print minuti$
-    result = nuovastringa + neominuti + "'" + " " + secondi + "''" + " " + cardinal
-    NSLatitudeconverter$ = result
+    result = nuovastringa + " " + neominuti + "'" + " " + secondi + "''" + " " + cardinal
+    NSLatitudeconverter = result
 
 
 
 End Function
-Function DecimalLatitudecalculate! (relativey As Single)
+Function DecimalLatitudecalculate (relativey As Single) as single
     Dim tempsingle As Single
     tempsingle = centery - relativey
     deccalculate = tempsingle / yratio
-    DecimalLatitudecalculate! = deccalculate
+    DecimalLatitudecalculate = deccalculate
 End Function
 
