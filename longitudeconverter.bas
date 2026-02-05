@@ -6,37 +6,6 @@
 ' ------------------------------------------------------------------------------------------------------------------------------------
 declare Function DecimalLongitudecalculate (relativex As Single) as single
 declare function EWLongitudeconverter(ad as single) as string
-type wind
-   forza as integer
-   direzione as single
-   vewlocita as single
-end type
-
-
-type vawe
-   altezza as single
-   chop as single
-end type
-
-type timoneType
-   locx as single
-   locy as single
-   angle as single
-end type
-type andaturaType
-   bolina as boolean
-   poppa as boolean
-end type
-
-type ship
-   timone as timoneType
-   andatura as andaturaType
-   viniziale as single
-   stazza as integer
-   vela as single
-   declare sub setAndatura(tipo as boolean)
-   declare sub setAngle(angolo as single)
-end type
 
 Dim Shared as single xratio, yratio 
 Dim Shared as single centerx, centery, xpos 
